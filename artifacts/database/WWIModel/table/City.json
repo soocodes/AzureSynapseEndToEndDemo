@@ -1,0 +1,109 @@
+{
+	"name": "City",
+	"properties": {
+		"Name": "City",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Description": "A large or important municipality in the U.S. governed under a charter granted by the state.\n\nA type of incorporated place in 49 States and the District of Columbia. In 20 States, some or all cities are not part of any MCD, and the Census Bureau also treats these as county subdivisions, statistically equivalent to MCDs. See also county subdivision, dependent place, incorporated place, independent place. \n\nA type of incorporated place in all states and the District of Columbia. In agreement with the State of Hawaii, however, the Census Bureau does not recognize the city of Honolulu for presentation of decennial census data. In Virginia, all cities are not part of any county, and the Census Bureau treats them as county equivalents as well as places for purposes of data presentation; there also is one such independent city in each of three states: Maryland, Missouri, and Nevada. In 20 states, some or all cities are not part of any minor civil division, and the Census Bureau treats them as county subdivisions for purposes of data presentation. See county equivalent, county subdivision, governmental unit, incorporated place, and independent city.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "CityId",
+					"Description": "The unique identifier of a City.",
+					"BaseAttributeReference": {
+						"Entity": "City.cdm.json/City",
+						"Name": "CityId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CityName",
+					"Description": "The name of the City.",
+					"BaseAttributeReference": {
+						"Entity": "City.cdm.json/City",
+						"Name": "CityName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "CountyCode",
+					"Description": "A three-digit code assigned by the National Institute of Standards and Technology (NIST) to identify each county and statistically equivalent entity within a State.\n\nThe NIST assigns the codes based on the alphabetic sequence of county names; it documents these codes in a FIPS publication (FIPS PUB 6). The Census Bureau also documents these codes in its Geographic Identification Code Scheme. The NIST leaves gaps in the numbering system to accommodate new counties or statistically equivalent entities. See also Federal Information Processing Standards, Geographic Identification Code Scheme.",
+					"BaseAttributeReference": {
+						"Entity": "City.cdm.json/City",
+						"Name": "CountyCode"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 3,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/City",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/City",
+				"Properties": {
+					"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"CityId\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CityId\"},\"CityName\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CityName\"},\"CountyCode\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CountyCode\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"City\",\"path\":\"City.cdm.json/City\"},\"description\":\"A large or important municipality in the U.S. governed under a charter granted by the state.\\n\\nA type of incorporated place in 49 States and the District of Columbia. In 20 States, some or all cities are not part of any MCD, and the Census Bureau also treats these as county subdivisions, statistically equivalent to MCDs. See also county subdivision, dependent place, incorporated place, independent place. \\n\\nA type of incorporated place in all states and the District of Columbia. In agreement with the State of Hawaii, however, the Census Bureau does not recognize the city of Honolulu for presentation of decennial census data. In Virginia, all cities are not part of any county, and the Census Bureau treats them as county equivalents as well as places for purposes of data presentation; there also is one such independent city in each of three states: Maryland, Missouri, and Nevada. In 20 states, some or all cities are not part of any minor civil division, and the Census Bureau treats them as county subdivisions for purposes of data presentation. See county equivalent, county subdivision, governmental unit, incorporated place, and independent city.\",\"primaryKey\":[\"CityId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CityId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a City.\",\"isNullable\":false,\"name\":\"CityId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CityName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the City.\",\"isNullable\":true,\"name\":\"CityName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"City.cdm.json/City\",\"name\":\"CountyCode\"},\"dataType\":\"string\",\"dataTypeLength\":3,\"description\":\"A three-digit code assigned by the National Institute of Standards and Technology (NIST) to identify each county and statistically equivalent entity within a State.\\n\\nThe NIST assigns the codes based on the alphabetic sequence of county names; it documents these codes in a FIPS publication (FIPS PUB 6). The Census Bureau also documents these codes in its Geographic Identification Code Scheme. The NIST leaves gaps in the numbering system to accommodate new counties or statistically equivalent entities. See also Federal Information Processing Standards, Geographic Identification Code Scheme.\",\"isNullable\":true,\"name\":\"CountyCode\"}]}}}",
+			"Description": "A large or important municipality in the U.S. governed under a charter granted by the state.\n\nA type of incorporated place in 49 States and the District of Columbia. In 20 States, some or all cities are not part of any MCD, and the Census Bureau also treats these as county subdivisions, statistically equivalent to MCDs. See also county subdivision, dependent place, incorporated place, independent place. \n\nA type of incorporated place in all states and the District of Columbia. In agreement with the State of Hawaii, however, the Census Bureau does not recognize the city of Honolulu for presentation of decennial census data. In Virginia, all cities are not part of any county, and the Census Bureau treats them as county equivalents as well as places for purposes of data presentation; there also is one such independent city in each of three states: Maryland, Missouri, and Nevada. In 20 states, some or all cities are not part of any minor civil division, and the Census Bureau treats them as county subdivisions for purposes of data presentation. See county equivalent, county subdivision, governmental unit, incorporated place, and independent city.",
+			"DisplayFolderInfo": "{\"name\":\"Geography\",\"colorCode\":\"#630454\"}",
+			"PrimaryKeys": "CityId",
+			"spark.sql.sources.provider": "parquet",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

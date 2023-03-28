@@ -1,0 +1,109 @@
+{
+	"name": "VendorType",
+	"properties": {
+		"Name": "VendorType",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Description": "A categorization of Vendors based upon whether they manufacture and supply the product (OEM), add value to the product and supply it (VAR), resell the product (Reseller), wholesale the product (Wholesaler) etc.\n\nEx :\n- OEM\n- VAR\n- Reseller\n- Wholesaler",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "VendorTypeId",
+					"Description": "The unique identifier of a Vendor Type.",
+					"BaseAttributeReference": {
+						"Entity": "VendorType.cdm.json/VendorType",
+						"Name": "VendorTypeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "VendorTypeName",
+					"Description": "The name of the Vendor Type.",
+					"BaseAttributeReference": {
+						"Entity": "VendorType.cdm.json/VendorType",
+						"Name": "VendorTypeName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "VendorTypeDescription",
+					"Description": "The description of the Vendor Type.",
+					"BaseAttributeReference": {
+						"Entity": "VendorType.cdm.json/VendorType",
+						"Name": "VendorTypeDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/VendorType",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/VendorType",
+				"Properties": {
+					"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"VendorTypeId\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeId\"},\"VendorTypeName\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeName\"},\"VendorTypeDescription\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"VendorType\",\"path\":\"VendorType.cdm.json/VendorType\"},\"description\":\"A categorization of Vendors based upon whether they manufacture and supply the product (OEM), add value to the product and supply it (VAR), resell the product (Reseller), wholesale the product (Wholesaler) etc.\\n\\nEx :\\n- OEM\\n- VAR\\n- Reseller\\n- Wholesaler\",\"primaryKey\":[\"VendorTypeId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Vendor Type.\",\"isNullable\":false,\"name\":\"VendorTypeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of the Vendor Type.\",\"isNullable\":true,\"name\":\"VendorTypeName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"VendorType.cdm.json/VendorType\",\"name\":\"VendorTypeDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of the Vendor Type.\",\"isNullable\":true,\"name\":\"VendorTypeDescription\"}]}}}",
+			"Description": "A categorization of Vendors based upon whether they manufacture and supply the product (OEM), add value to the product and supply it (VAR), resell the product (Reseller), wholesale the product (Wholesaler) etc.\n\nEx :\n- OEM\n- VAR\n- Reseller\n- Wholesaler",
+			"DisplayFolderInfo": "{\"name\":\"Vendor\",\"colorCode\":\"#1C508C\"}",
+			"PrimaryKeys": "VendorTypeId",
+			"spark.sql.sources.provider": "parquet",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

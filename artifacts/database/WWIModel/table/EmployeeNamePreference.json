@@ -1,0 +1,161 @@
+{
+	"name": "EmployeeNamePreference",
+	"properties": {
+		"Name": "EmployeeNamePreference",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Description": "The employee's specified preference for using a particular name.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "EmployeeId",
+					"Description": "The unique identifier of an Employee.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "EmployeeId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "NamePreferenceId",
+					"Description": "The unique identifier of a name preference.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "NamePreferenceId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PeriodStartDate",
+					"Description": "The period start date of the associated Customer Name Preference.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "PeriodStartDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "PeriodEndDate",
+					"Description": "The period end date of the associated Customer Name Preference.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "PeriodEndDate"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "date",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"DateFormat": "YYYY-MM-DD",
+							"HIVE_TYPE_STRING": "date"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeNameId",
+					"Description": "The unique identifier of an Employee Name.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "EmployeeNameId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "EmployeeNamePreferenceNote",
+					"Description": "A note, comment or additional information regarding the employee name preference.",
+					"BaseAttributeReference": {
+						"Entity": "EmployeeNamePreference.cdm.json/EmployeeNamePreference",
+						"Name": "EmployeeNamePreferenceNote"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/EmployeeNamePreference",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/EmployeeNamePreference",
+				"Properties": {
+					"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"EmployeeId\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeId\"},\"NamePreferenceId\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"NamePreferenceId\"},\"PeriodStartDate\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"PeriodStartDate\"},\"PeriodEndDate\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"PeriodEndDate\"},\"EmployeeNameId\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeNameId\"},\"EmployeeNamePreferenceNote\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeNamePreferenceNote\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"EmployeeNamePreference\",\"path\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\"},\"description\":\"The employee's specified preference for using a particular name.\",\"primaryKey\":[\"EmployeeId\",\"NamePreferenceId\",\"PeriodStartDate\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employee.\",\"isNullable\":false,\"name\":\"EmployeeId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"NamePreferenceId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a name preference.\",\"isNullable\":false,\"name\":\"NamePreferenceId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"PeriodStartDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period start date of the associated Customer Name Preference.\",\"isNullable\":false,\"name\":\"PeriodStartDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"PeriodEndDate\"},\"dataType\":\"date\",\"dateFormat\":\"YYYY-MM-DD\",\"description\":\"The period end date of the associated Customer Name Preference.\",\"isNullable\":false,\"name\":\"PeriodEndDate\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeNameId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of an Employee Name.\",\"isNullable\":true,\"name\":\"EmployeeNameId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"EmployeeNamePreference.cdm.json/EmployeeNamePreference\",\"name\":\"EmployeeNamePreferenceNote\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"A note, comment or additional information regarding the employee name preference.\",\"isNullable\":true,\"name\":\"EmployeeNamePreferenceNote\"}]}}}",
+			"Description": "The employee's specified preference for using a particular name.",
+			"DisplayFolderInfo": "{\"name\":\"Human Resources & Payroll\",\"colorCode\":\"#EA279F\"}",
+			"PrimaryKeys": "EmployeeId,NamePreferenceId,PeriodStartDate",
+			"spark.sql.sources.provider": "parquet",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

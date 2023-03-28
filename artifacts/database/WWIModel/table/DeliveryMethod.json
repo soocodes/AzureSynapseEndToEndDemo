@@ -1,0 +1,109 @@
+{
+	"name": "DeliveryMethod",
+	"properties": {
+		"Name": "DeliveryMethod",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Description": "The method by which the document was delivered.\n\nEx:\n- Mail\n- Registered Mail\n- FedEx\n- UPS\n- Courier\n- Email\n- EDI\n- Internet",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "DeliveryMethodId",
+					"Description": "The unique identifier of a document delivery method.",
+					"BaseAttributeReference": {
+						"Entity": "DeliveryMethod.cdm.json/DeliveryMethod",
+						"Name": "DeliveryMethodId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DeliveryMethodName",
+					"Description": "The name of a document delivery method.",
+					"BaseAttributeReference": {
+						"Entity": "DeliveryMethod.cdm.json/DeliveryMethod",
+						"Name": "DeliveryMethodName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DeliveryMethodDescription",
+					"Description": "The description of a document delivery method.",
+					"BaseAttributeReference": {
+						"Entity": "DeliveryMethod.cdm.json/DeliveryMethod",
+						"Name": "DeliveryMethodDescription"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 2048,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/DeliveryMethod",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/DeliveryMethod",
+				"Properties": {
+					"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"DeliveryMethodId\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodId\"},\"DeliveryMethodName\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodName\"},\"DeliveryMethodDescription\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodDescription\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"DeliveryMethod\",\"path\":\"DeliveryMethod.cdm.json/DeliveryMethod\"},\"description\":\"The method by which the document was delivered.\\n\\nEx:\\n- Mail\\n- Registered Mail\\n- FedEx\\n- UPS\\n- Courier\\n- Email\\n- EDI\\n- Internet\",\"primaryKey\":[\"DeliveryMethodId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a document delivery method.\",\"isNullable\":false,\"name\":\"DeliveryMethodId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The name of a document delivery method.\",\"isNullable\":true,\"name\":\"DeliveryMethodName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"DeliveryMethod.cdm.json/DeliveryMethod\",\"name\":\"DeliveryMethodDescription\"},\"dataType\":\"string\",\"dataTypeLength\":2048,\"description\":\"The description of a document delivery method.\",\"isNullable\":true,\"name\":\"DeliveryMethodDescription\"}]}}}",
+			"Description": "The method by which the document was delivered.\n\nEx:\n- Mail\n- Registered Mail\n- FedEx\n- UPS\n- Courier\n- Email\n- EDI\n- Internet",
+			"DisplayFolderInfo": "{\"name\":\"Document Management\",\"colorCode\":\"#001475\"}",
+			"PrimaryKeys": "DeliveryMethodId",
+			"spark.sql.sources.provider": "parquet",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}

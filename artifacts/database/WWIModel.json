@@ -1,0 +1,24 @@
+{
+	"name": "WWIModel",
+	"properties": {
+		"Name": "WWIModel",
+		"EntityType": "DATABASE",
+		"Description": "",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"Properties": {
+			"DerivedModelDBInfo": "{\"ModelDirectives\":{\"BaseModel\":{\"Name\":\"ConsumerGoods\",\"Version\":\"1.1.0\"}}}",
+			"IsSyMSCDMDatabase": true
+		},
+		"Source": {
+			"Provider": "ADLS",
+			"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel",
+			"Properties": {
+				"FormatType": "parquet",
+				"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage"
+			}
+		}
+	},
+	"type": "DATABASE"
+}

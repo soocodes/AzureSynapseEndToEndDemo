@@ -1,0 +1,26 @@
+{
+	"name": "relationship-bslxdgrtgv",
+	"properties": {
+		"Name": "relationship-bslxdgrtgv",
+		"EntityType": "RELATIONSHIP",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"FromTableName": "VendorType",
+		"ToTableName": "Vendor",
+		"ColumnRelationshipInformations": [
+			{
+				"FromColumnName": "VendorTypeId",
+				"ToColumnName": "VendorTypeId"
+			}
+		],
+		"RelationshipType": 0,
+		"Properties": {
+			"DerivedModelRelationshipInfo": "{\"baseRelationship\":{\"fromEntity\":\"VendorType.cdm.json/VendorType\",\"toEntity\":\"Vendor.cdm.json/Vendor\",\"joinPairs\":[{\"fromAttribute\":\"VendorTypeId\",\"toAttribute\":\"VendorTypeId\"}]}}"
+		}
+	},
+	"type": "RELATIONSHIP"
+}

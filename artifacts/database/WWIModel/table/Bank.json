@@ -1,0 +1,200 @@
+{
+	"name": "Bank",
+	"properties": {
+		"Name": "Bank",
+		"EntityType": "TABLE",
+		"Namespace": {
+			"DatabaseName": "WWIModel"
+		},
+		"Description": "A financial institution providing financial services such as Letters of Credit etc.",
+		"TableType": "EXTERNAL",
+		"Origin": {
+			"Type": "SPARK"
+		},
+		"StorageDescriptor": {
+			"Columns": [
+				{
+					"Name": "BankId",
+					"Description": "The unique identifier of a Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankId"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": false,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankName",
+					"Description": "The business name of the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankName"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankDBNumber",
+					"Description": "The Dun & Bradstreet number assigned to the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankDBNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankAbaNumber",
+					"Description": "The US ABA number of the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankAbaNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "integer",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Properties": {
+							"HIVE_TYPE_STRING": "integer"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankTelephoneNumber",
+					"Description": "The telephone number of the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankTelephoneNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 15,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankFaxNumber",
+					"Description": "The fax number of the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankFaxNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 15,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "BankEmailAddress",
+					"Description": "The email address of the Bank.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "BankEmailAddress"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "string",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Length": 256,
+						"Properties": {
+							"HIVE_TYPE_STRING": "string"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				},
+				{
+					"Name": "DunsNumber",
+					"Description": "An exclusive nine-digit Dun & Bradstreet D-U-N-S Number is assigned to each business location in a global database, it is widely used as a tool for identifying, organizing and consolidating information about businesses. Companies worldwide use it to link information about suppliers, customers and trading partners, providing them a more complete picture of risks and opportunities in their business relationships.\n\nD&B D-U-N-S Numbers are the key to building corporate family relationships in the D&B file. Since each location of a business may have its own unique D&B D-U-N-S Number, a large organization is likely to have many different D&B D-U-N-S Numbers within its corporate \"family tree\". D&B links the D&B D-U-N-S Numbers of parents, subsidiaries, headquarters and branches on more than 6.0 million corporate family members around the world.",
+					"BaseAttributeReference": {
+						"Entity": "Bank.cdm.json/Bank",
+						"Name": "DunsNumber"
+					},
+					"OriginDataTypeName": {
+						"TypeName": "decimal",
+						"IsComplexType": false,
+						"IsNullable": true,
+						"Precision": 9,
+						"Scale": 0,
+						"Properties": {
+							"HIVE_TYPE_STRING": "decimal"
+						}
+					},
+					"DeltaFormatInvalidMessages": []
+				}
+			],
+			"Format": {
+				"InputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat",
+				"OutputFormat": "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat",
+				"FormatType": "parquet",
+				"SerializeLib": "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe",
+				"Properties": {
+					"path": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/Bank",
+					"FormatTypeSetToDatabaseDefault": true
+				}
+			},
+			"Source": {
+				"Provider": "ADLS",
+				"Location": "abfss://sssmccanadacon@sssmccanadasaname.dfs.core.windows.net/WWIModel/Bank",
+				"Properties": {
+					"LinkedServiceName": "sssmccanadaws-WorkspaceDefaultStorage",
+					"LocationSetToDatabaseDefault": true
+				}
+			},
+			"Properties": {
+				"textinputformat.record.delimiter": ",",
+				"compression": "{\"type\":\"None\",\"level\":\"optimal\"}",
+				"derivedModelAttributeInfo": "{\"attributeReferences\":{\"BankId\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankId\"},\"BankName\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankName\"},\"BankDBNumber\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankDBNumber\"},\"BankAbaNumber\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankAbaNumber\"},\"BankTelephoneNumber\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankTelephoneNumber\"},\"BankFaxNumber\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankFaxNumber\"},\"BankEmailAddress\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankEmailAddress\"},\"DunsNumber\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"DunsNumber\"}}}"
+			},
+			"Compressed": false,
+			"IsStoredAsSubdirectories": false
+		},
+		"Properties": {
+			"DerivedModelEntityInfo": "{\"entityDirectives\":{\"baseEntityReference\":{\"name\":\"Bank\",\"path\":\"Bank.cdm.json/Bank\"},\"description\":\"A financial institution providing financial services such as Letters of Credit etc.\",\"primaryKey\":[\"BankId\"],\"projectionInfo\":{\"attributes\":[{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankId\"},\"dataType\":\"integer\",\"description\":\"The unique identifier of a Bank.\",\"isNullable\":false,\"name\":\"BankId\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankName\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The business name of the Bank.\",\"isNullable\":true,\"name\":\"BankName\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankDBNumber\"},\"dataType\":\"integer\",\"description\":\"The Dun & Bradstreet number assigned to the Bank.\",\"isNullable\":true,\"name\":\"BankDBNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankAbaNumber\"},\"dataType\":\"integer\",\"description\":\"The US ABA number of the Bank.\",\"isNullable\":true,\"name\":\"BankAbaNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankTelephoneNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The telephone number of the Bank.\",\"isNullable\":true,\"scale\":0,\"name\":\"BankTelephoneNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankFaxNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":15,\"description\":\"The fax number of the Bank.\",\"isNullable\":true,\"scale\":0,\"name\":\"BankFaxNumber\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"BankEmailAddress\"},\"dataType\":\"string\",\"dataTypeLength\":256,\"description\":\"The email address of the Bank.\",\"isNullable\":true,\"name\":\"BankEmailAddress\"},{\"type\":\"Existing\",\"attributeReference\":{\"entity\":\"Bank.cdm.json/Bank\",\"name\":\"DunsNumber\"},\"dataType\":\"decimal\",\"dataTypeLength\":9,\"description\":\"An exclusive nine-digit Dun & Bradstreet D-U-N-S Number is assigned to each business location in a global database, it is widely used as a tool for identifying, organizing and consolidating information about businesses. Companies worldwide use it to link information about suppliers, customers and trading partners, providing them a more complete picture of risks and opportunities in their business relationships.\\n\\nD&B D-U-N-S Numbers are the key to building corporate family relationships in the D&B file. Since each location of a business may have its own unique D&B D-U-N-S Number, a large organization is likely to have many different D&B D-U-N-S Numbers within its corporate \\\"family tree\\\". D&B links the D&B D-U-N-S Numbers of parents, subsidiaries, headquarters and branches on more than 6.0 million corporate family members around the world.\",\"isNullable\":true,\"scale\":0,\"name\":\"DunsNumber\"}]}}}",
+			"Description": "A financial institution providing financial services such as Letters of Credit etc.",
+			"DisplayFolderInfo": "{\"name\":\"Shipping\",\"colorCode\":\"#003C96\"}",
+			"PrimaryKeys": "BankId",
+			"spark.sql.sources.provider": "parquet",
+			"sql:IsAppendOnly": false
+		},
+		"Retention": 0,
+		"Temporary": false,
+		"IsRewriteEnabled": false
+	},
+	"type": "TABLE"
+}
